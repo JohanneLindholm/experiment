@@ -1,32 +1,39 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Delay Discounting Task</title>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script>
-        // Extract the participantId from the URL query parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const participantId = urlParams.get("participantId") || "default_id";
-        console.log("Extracted Participant ID:", participantId);
-
-        // Pass participantId to the experiment
-        const script = document.createElement("script");
-        script.src = "js/app.js";
-        script.type = "module";
-        script.onload = () => {
-            import("./js/app.js").then(({ run }) => {
-                run(participantId);
-            }).catch((error) => {
-                console.error("Error running the experiment script:", error);
-            });
-        };
-        document.head.appendChild(script);
-    </script>
-
+    <!-- Link to the experiment's CSS -->
     <link href="css/main.css" rel="stylesheet">
 </head>
-<body></body>
+<body>
+    <script type="module">
+        // Extract the participantId from the URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const qualtricsParticipantId = urlParams.get("participantId") || "default_id";
+        console.log("Extracted Participant ID:", qualtricsParticipantId);
+
+        // Dynamically load the experiment script and run it
+        (async () => {
+            try {
+                // Import the experiment module
+                const { run } = await import("./js/app.js");
+
+                // Verify the run function is correctly imported
+                if (typeof run === "function") {
+                    console.log("Running the experiment with Participant ID:", qualtricsParticipantId);
+                    run(qualtricsParticipantId); // Call the run function with the extracted ID
+                } else {
+                    console.error("The 'run' function is not properly defined in app.js");
+                }
+            } catch (error) {
+                console.error("Error loading or running the experiment script:", error);
+            }
+        })();
+    </script>
+</body>
 </html>
+
