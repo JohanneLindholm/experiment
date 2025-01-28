@@ -1,15 +1,24 @@
-<script type="module">
-    window.addEventListener("load", async () => {
-        import("./js/app.js")
-            .then(({ run }) => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const participantId = urlParams.get("participantId") || "default_id";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Delay Discounting Task</title>
+    <script type="module">
+        import { run } from "./js/app.js";  // Ensure this correctly imports `run()`
 
-                console.log("Extracted Participant ID:", participantId);
-                console.log("Running experiment with participant ID:", participantId);
-                
-                run(participantId);
-            })
-            .catch(error => console.error("Error importing app.js:", error));
-    });
-</script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const participantId = urlParams.get("participantId") || "default_id";
+
+        console.log("Extracted Participant ID:", participantId);
+
+        try {
+            console.log("Running experiment with participant ID:", participantId);
+            run(participantId);  // Correctly call `run()`
+        } catch (error) {
+            console.error("Error running the experiment script:", error);
+        }
+    </script>
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body></body>
+</html>
