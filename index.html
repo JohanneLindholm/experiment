@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Delay Discounting Task</title>
     <script type="module">
-        import { run } from "./js/app.js";  // Ensure this correctly imports `run()`
+        import { run } from "./js/app.js";  // ✅ Ensure `run` is correctly imported
 
         const urlParams = new URLSearchParams(window.location.search);
         const participantId = urlParams.get("participantId") || "default_id";
@@ -13,7 +13,7 @@
 
         try {
             console.log("Running experiment with participant ID:", participantId);
-            run(participantId);  // Correctly call `run()`
+            run(participantId);  // ✅ Pass participantId correctly
         } catch (error) {
             console.error("Error running the experiment script:", error);
         }
