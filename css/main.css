@@ -572,3 +572,6 @@
 .jspsych-btn:hover {
   background-color: #b00;
 }
+body {
+  background-color: #ffefd5 !important; /* pale orange */
+}
