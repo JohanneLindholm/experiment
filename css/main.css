@@ -514,3 +514,61 @@
 }
 
 .jspsych-display-element{background-color:#fff}
+
+/* === Custom MCQ27 Design Overrides === */
+
+/* Style the radio choice blocks as large cards */
+.jspsych-survey-multi-choice-option {
+  display: inline-block;
+  background-color: #f8f8f8;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 20px 30px;
+  margin: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 1.2em;
+  min-width: 180px;
+  text-align: center;
+}
+
+/* Hover effect */
+.jspsych-survey-multi-choice-option:hover {
+  background-color: #fdd;
+  border-color: #e00;
+}
+
+/* Highlight selected choice (using jsPsych’s internal span structure) */
+.jspsych-survey-multi-choice-option input[type="radio"]:checked + span {
+  background-color: #e00;
+  color: white;
+  border-color: #b00;
+  border-radius: 12px;
+  padding: 20px 30px;
+  display: inline-block;
+}
+
+/* Remove asterisk */
+.jspsych-required {
+  display: none !important;
+}
+
+/* Next button styling */
+.jspsych-btn {
+  background-color: #e00;
+  color: white;
+  padding: 15px 40px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 40px auto 0 auto;
+  width: 60%;
+  transition: background-color 0.2s ease;
+}
+
+.jspsych-btn:hover {
+  background-color: #b00;
+}
