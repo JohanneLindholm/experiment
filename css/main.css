@@ -1,3 +1,5 @@
+@import "~jspsych/css/jspsych.css";
+
 /*!*************************************************************************************************************!*\
   !*** css ../../node_modules/css-loader/dist/cjs.js!../../node_modules/@fontsource/open-sans/400-italic.css ***!
   \*************************************************************************************************************/
@@ -186,7 +188,7 @@
 }
 
 .jspsych-content {
-  max-width: 640px;
+  max-width: 1040px;
   margin: auto;
   padding: 0 20px;
   text-align: center;
@@ -373,73 +375,109 @@
 
 .jspsych-display-element{background-color:#fff}
 
-/* --- GLP-1 Style Overrides --- */
 
-/* Choice block container: two buttons per row */
-.jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-question {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+
+
+
+
+
+
+
+
+/* --- GLP-1 MCQ27 Style (Stable Cross-Browser) --- */
+
+/* Center and constrain content */
+.jspsych-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-family: "Helvetica", "Arial", sans-serif;
 }
 
-/* All choice buttons: same fixed width */
+/* Layout for horizontal choice questions */
+.jspsych-survey-multi-choice-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Responsive switch to vertical on small screens */
+@media (max-width: 600px) {
+  .jspsych-survey-multi-choice-horizontal {
+    flex-direction: column;
+  }
+}
+
+/* Prompt spans full row */
+.jspsych-survey-multi-choice-prompt {
+  flex-basis: 100%;
+  margin-bottom: 12px;
+  font-size: 18px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+/* Choice option container */
 .jspsych-survey-multi-choice-option {
   flex: 1 1 48%;
   max-width: 48%;
-  min-width: 48%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Hide radio buttons */
+.jspsych-survey-multi-choice-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Style label as button */
+.jspsych-survey-multi-choice-option label {
+  display: block;
+  padding: 18px 16px;
   background-color: #e6e6e6;
   border-radius: 8px;
-  padding: 18px 16px;
   font-size: 16px;
   font-weight: 500;
   text-align: center;
   cursor: pointer;
+  border: 1px solid transparent;
   transition: all 0.2s ease;
   box-sizing: border-box;
+  line-height: 1.4;
 }
 
-/* One-button (vertical) layout will still be full-width by default */
-.jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-option:nth-child(1):only-child {
-  flex-basis: 100%;
-  max-width: 100%;
-}
-
-/* Remove radio circles */
-.jspsych-survey-multi-choice-option input[type="radio"] {
-  display: none;
-}
-
-/* Hover style */
-.jspsych-survey-multi-choice-option:hover {
+/* Hover effect */
+.jspsych-survey-multi-choice-option label:hover {
   background-color: #cccccc;
 }
 
-/* Selected button full fill */
-.jspsych-survey-multi-choice-option input[type="radio"]:checked + span {
+/* Selected option */
+.jspsych-survey-multi-choice-option input[type="radio"]:checked + label {
   background-color: #3b5998;
   color: white;
   font-weight: bold;
   border-radius: 8px;
-  padding: 18px 16px;
-  display: inline-block;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-/* Next button: same width and alignment */
+/* Full-width Next button */
 .jspsych-btn {
+  display: block;
   background-color: #3b5998;
   color: white;
   font-size: 16px;
   font-weight: bold;
   padding: 10px 0;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   width: 100%;
-  max-width: 640px;
+  max-width: 960px;
   transition: background-color 0.2s ease;
 }
 
@@ -447,11 +485,7 @@
   background-color: #2d4373;
 }
 
-/* Remove asterisk */
+/* Remove asterisk from required questions */
 .jspsych-required {
   display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  visibility: hidden !important;
-  font-size: 0 !important;
 }
