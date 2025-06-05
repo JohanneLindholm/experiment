@@ -45,7 +45,7 @@ body {
 }
 
 .choice-button.selected {
-  background-color: #007bff;
+  background-color: #e00;
   color: white;
 }
 
