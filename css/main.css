@@ -163,329 +163,145 @@
 /*!*****************************************************************************************************************!*\
   !*** css ../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*****************************************************************************************************************/
-/*
- * CSS for jsPsych experiments.
- *
- * This stylesheet provides minimal styling to make jsPsych
- * experiments look polished without any additional styles.
- */
-/* Container holding jsPsych content */
-.jspsych-display-element {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+
+/* ===== FULL-CENTER EVERYTHING ON SCREEN ===== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
 }
 
-.jspsych-display-element:focus {
-  outline: none;
+body.jspsych-display-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .jspsych-content-wrapper {
-  display: flex;
-  margin: auto;
-  flex: 1 1 100%;
   width: 100%;
+  max-width: 800px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -150px; /* <-- add this line */
 }
 
-.jspsych-content {
-  max-width: 1040px;
-  margin: auto;
-  padding: 0 20px;
-  text-align: center;
-  box-sizing: border-box;
-}
 
-.jspsych-top {
-  align-items: flex-start;
-}
+/* ===== QUESTION BLOCK ===== */
 
-.jspsych-middle {
+.jspsych-survey-multi-choice-question {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-/* fonts and type */
-.jspsych-display-element {
-  font-family: "Open Sans", "Arial", sans-serif;
-  font-size: 18px;
-  line-height: 1.6em;
-}
-
-/* Form elements like input fields and buttons */
-.jspsych-display-element input[type=text] {
-  font-family: "Open Sans", "Arial", sans-serif;
-  font-size: 14px;
-}
-
-/* borrowing Bootstrap style for btn elements, but combining styles a bit */
-.jspsych-btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin: 0px;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: "Open Sans", "Arial", sans-serif;
-  cursor: pointer;
-  line-height: 1.4;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-}
-
-/* only apply the hover style on devices with a mouse/pointer that can hover - issue #977 */
-@media (hover: hover) {
-  .jspsych-btn:hover {
-    background-color: #ddd;
-    border-color: #aaa;
-  }
-}
-.jspsych-btn:active {
-  background-color: #ddd;
-  border-color: #000000;
-}
-
-.jspsych-btn:disabled {
-  background-color: #eee;
-  color: #aaa;
-  border-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* custom style for input[type="range] (slider) to improve alignment between positions and labels */
-.jspsych-slider {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 100%;
-  background: transparent;
-}
-
-.jspsych-slider:focus {
-  outline: none;
-}
-
-/* track */
-.jspsych-slider::-webkit-slider-runnable-track {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #eee;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border-radius: 2px;
-  border: 1px solid #aaa;
-}
-
-.jspsych-slider::-moz-range-track {
-  appearance: none;
-  width: 100%;
-  height: 8px;
-  cursor: pointer;
-  background: #eee;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border-radius: 2px;
-  border: 1px solid #aaa;
-}
-
-.jspsych-slider::-ms-track {
-  appearance: none;
-  width: 99%;
-  height: 14px;
-  cursor: pointer;
-  background: #eee;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border-radius: 2px;
-  border: 1px solid #aaa;
-}
-
-/* thumb */
-.jspsych-slider::-webkit-slider-thumb {
-  border: 1px solid #666;
-  height: 24px;
-  width: 15px;
-  border-radius: 5px;
-  background: #ffffff;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -9px;
-}
-
-.jspsych-slider::-moz-range-thumb {
-  border: 1px solid #666;
-  height: 24px;
-  width: 15px;
-  border-radius: 5px;
-  background: #ffffff;
-  cursor: pointer;
-}
-
-.jspsych-slider::-ms-thumb {
-  border: 1px solid #666;
-  height: 20px;
-  width: 15px;
-  border-radius: 5px;
-  background: #ffffff;
-  cursor: pointer;
-  margin-top: -2px;
-}
-
-/* jsPsych progress bar */
-#jspsych-progressbar-container {
-  color: #555;
-  border-bottom: 1px solid #dedede;
-  background-color: #f9f9f9;
-  margin-bottom: 1em;
-  text-align: center;
-  padding: 8px 0px;
-  width: 100%;
-  line-height: 1em;
-}
-
-#jspsych-progressbar-container span {
-  font-size: 14px;
-  padding-right: 14px;
-}
-
-#jspsych-progressbar-outer {
-  background-color: #eee;
-  width: 50%;
-  margin: auto;
-  height: 14px;
-  display: inline-block;
-  vertical-align: middle;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-#jspsych-progressbar-inner {
-  background-color: #aaa;
-  width: 0%;
-  height: 100%;
-}
-
-/* Control appearance of jsPsych.data.displayData() */
-#jspsych-data-display {
-  text-align: left;
-}
-
-.jspsych-display-element{background-color:#fff}
-
-
-
-
-
-
-
-
-
-
-/* --- GLP-1 MCQ27 Style (Stable Cross-Browser) --- */
-
-/* Center and constrain content */
-.jspsych-content {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 20px;
-  box-sizing: border-box;
-  font-family: "Helvetica", "Arial", sans-serif;
-}
-
-/* Layout for horizontal choice questions */
-.jspsych-survey-multi-choice-horizontal {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-/* Responsive switch to vertical on small screens */
-@media (max-width: 600px) {
-  .jspsych-survey-multi-choice-horizontal {
-    flex-direction: column;
-  }
-}
-
-/* Prompt spans full row */
 .jspsych-survey-multi-choice-prompt {
-  flex-basis: 100%;
-  margin-bottom: 12px;
-  font-size: 18px;
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  font-weight: 600;
   text-align: left;
-  line-height: 1.4;
 }
 
-/* Choice option container */
+/* ===== OPTION BUTTONS ===== */
 .jspsych-survey-multi-choice-option {
-  flex: 1 1 48%;
-  max-width: 48%;
-  position: relative;
+  display: flex;
+  justify-content: center; /* center the label */
+  width: 100%;
+  margin-bottom: 12px;
   box-sizing: border-box;
 }
 
-/* Hide radio buttons */
 .jspsych-survey-multi-choice-option input[type="radio"] {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
 
-/* Style label as button */
 .jspsych-survey-multi-choice-option label {
   display: block;
-  padding: 18px 16px;
-  background-color: #e6e6e6;
-  border-radius: 8px;
+  width: 100%;
+  max-width: 600px; /* fixed width like Qualtrics */
+  padding: 14px 20px;
+  border-radius: 4px;
+  background-color: #eeeeee;
   font-size: 16px;
-  font-weight: 500;
   text-align: center;
   cursor: pointer;
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-  line-height: 1.4;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Hover effect */
-.jspsych-survey-multi-choice-option label:hover {
-  background-color: #cccccc;
-}
-
-/* Selected option */
-.jspsych-survey-multi-choice-option input[type="radio"]:checked + label {
-  background-color: #3b5998;
+.jspsych-survey-multi-choice-option label.selected {
+  background-color: #4967AA;
   color: white;
-  font-weight: bold;
-  border-radius: 8px;
-}
+} 
 
-/* Full-width Next button */
+.jspsych-survey-multi-choice-option label:not(.selected):hover {
+  background-color: #e5e5e5;
+} 
+
+/* ===== NEXT BUTTON ===== */
 .jspsych-btn {
   display: block;
-  background-color: #3b5998;
-  color: white;
+  width: 640px;
+  padding: 4px 16px;           /* Smaller height */
+  margin: 130px auto 0 auto;    /* Lower on screen */
   font-size: 16px;
-  font-weight: bold;
-  padding: 10px 0;
-  margin: 30px auto 0 auto;
+  text-align: center;
+  background-color: #4967AA;
+  color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  width: 100%;
-  max-width: 960px;
-  transition: background-color 0.2s ease;
 }
 
 .jspsych-btn:hover {
-  background-color: #2d4373;
+  background-color: #3a518c;
 }
 
-/* Remove asterisk from required questions */
+.jspsych-btn:disabled {
+  background-color: #eee;
+  color: #aaa;
+  border: 1px solid #ccc;
+  cursor: not-allowed;
+}
+
+/* ===== REMOVE ASTERISK ===== */
+span.required,
+.required,
 .jspsych-required {
   display: none !important;
+}
+
+/* ===== OPTIONAL: Hide useless previous button ===== */
+button.jspsych-btn:disabled {
+  display: none !important;
+}
+@media (max-height: 700px) {
+  .jspsych-content-wrapper {
+    margin-top: -80px; /* smaller offset on short screens */
+  }
+
+  .jspsych-btn {
+    margin-top: 80px; /* prevent it from being too low */
+  }
+}
+
+@media (max-height: 500px) {
+  .jspsych-content-wrapper {
+    margin-top: -40px;
+  }
+
+  .jspsych-btn {
+    margin-top: 40px;
+  }
 }
