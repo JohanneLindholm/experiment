@@ -249,6 +249,28 @@ body.jspsych-display-element {
   background-color: #e5e5e5;
 } 
 
+/* ===== INTRO BLOCK ===== */
+
+.jspsych-instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.08);
+  max-width: 800px;
+  margin: -150px auto 0 auto; /* vertically offset for cohesion */
+}
+
+.jspsych-instructions-content {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
 /* ===== NEXT BUTTON ===== */
 .jspsych-btn {
   display: block;
