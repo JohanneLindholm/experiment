@@ -248,7 +248,7 @@ body.jspsych-display-element {
 } 
 
 .jspsych-survey-multi-choice-option label:not(.selected):hover {
-  background-color: #e5e5e5;
+  background-color: #f0f0f0;
 } 
 
 /* ===== INTRO BLOCK ===== */
